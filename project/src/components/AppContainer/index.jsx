@@ -2,21 +2,33 @@
  * Created by synerzip on 04/07/17.
  */
 import React from 'react';
-import PropTypes from 'prop-types';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import HeaderComponent from 'components/Header';
+import BodyContainer from 'components/BodyContainer';
 
-class AppContainer extends React.Component{
+class AppContainer extends React.Component {
 
-  constructor(props){
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+        this.state = { screenName: null };
+        this.onChangeScreen = this.onChangeScreen.bind(this);
+    }
 
-  render(){
-    return <div>{this.props.helloMessage} </div>
-  }
+    onChangeScreen(newName) {
+        this.setState({ screenName: newName });
+    }
+
+    render() {
+        return (
+          <MuiThemeProvider>
+            <div>
+              <HeaderComponent
+                changeScreenName={this.onChangeScreen}
+              />
+              <BodyContainer screenName={this.state.screenName} />
+            </div>
+          </MuiThemeProvider>);
+    }
 }
-
-AppContainer.propTypes = {
-  helloMessage:PropTypes.string
-};
 
 export default AppContainer;

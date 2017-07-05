@@ -5,4 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from 'components/AppContainer';
 
-ReactDOM.render(<AppContainer helloMessage="Hello World"/>, document.getElementById('root'));
+ReactDOM.render(
+  <AppContainer helloMessage="Hello World 123" />,
+    document.getElementById('root'));
